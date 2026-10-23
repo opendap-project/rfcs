@@ -2,7 +2,7 @@
 
 - **Status:** Accepted (2026-10-23; decided by Claude under the maintainers' delegation, with the keystore decided by the maintainers). Bench checks remain, listed at the end
 - **Date:** 2026-10-23
-- **Affected repositories:** system (interfaces, services), blackbird-os (USB gadget, links, discovery, key storage, packages), desktop (client and background service), toolkit-cli (client), toolkit-verify (conformance suite), t1 (product requirements, LED and UI states), board (USB, radios, key holder options), ui-components (user-facing states)
+- **Affected repositories:** system (interfaces, services), blackbird-os (USB gadget, links, discovery, key storage, packages), desktop (client and background service), toolkit-cli (client), toolkit-verify (conformance suite), t1 (product requirements, LED and UI states), board (USB, radios, key holder options), blackbird-ui (user-facing states)
 
 ## Summary
 
@@ -186,7 +186,7 @@ The exact identifiers are fixed in the specification.
 | `toolkit-verify` | The conformance suite every implementation passes, OpenDAP's first |
 | `t1` | LED states (pairing, transferring, updating) for T1-044; UI states |
 | `board` | USB endpoint count on the RK3566; measured BLE standby current; key holder option |
-| `ui-components` | The user-facing states of the conventions spec |
+| `blackbird-ui` | The user-facing states of the conventions spec |
 
 ## Alternatives
 
