@@ -2,7 +2,7 @@
 
 - **Status:** Accepted (2026-10-22, the maintainers' direction, written by Claude)
 - **Date:** 2026-10-22
-- **Affected repositories:** system, opendap-os, toolkit-cli (and the other toolkit repositories that ship Rust), desktop
+- **Affected repositories:** system, blackbird-os, toolkit-cli (and the other toolkit repositories that ship Rust), desktop
 
 ## Summary
 
