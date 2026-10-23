@@ -59,7 +59,7 @@ Without one protocol, each surface would talk to the device its own way. Feature
 | **USB networking** | Primary with a cable | CDC NCM. The T1's device-mode port is USB 2.0 High-Speed only on the RK3566 (480 Mb/s shared by every USB function; `board` ADR 0003). Inbox NCM drivers: Windows 11 (`UsbNcm.sys`, [Microsoft](https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/supported-usb-classes)), macOS (`AppleUSBNCM.kext`, observed on macOS 27.0.1; first version **UNVERIFIED**), Linux (`cdc_ncm`). Windows 10 has no inbox NCM driver: USB networking there is unsupported or needs a driver |
 | **The T1's access point** | No network around | The T1 runs a SoftAP for one peer; station and access point concurrently on one channel are supported by the mainline IW612 driver (`nxpwifi`, kernel 7.3) |
 | **Wi-Fi peer-to-peer** | Reserved | Not available: `nxpwifi` advertises no P2P modes (7.3), and macOS offers no public Wi-Fi Direct or Wi-Fi Aware. A slot is kept, enabled when drivers expose it (SYS-040) |
-| **Bluetooth LE** | Optional bootstrap | Presence and wake-up for discovery, and passing pairing data; never bulk data and never required. Its cost (qualification, §10) is a product decision |
+| **Bluetooth LE** | Optional bootstrap | Presence and wake-up for discovery, and passing pairing data; never bulk data and never required. Whether a product enables it is a product decision |
 | **A relay the owner chooses** | Optional reach | End-to-end encrypted traffic between the owner's devices across the internet; the relay sees ciphertext only. Any relay, including one the owner runs |
 | **The card** | Offline carrier | A card prepared by OpenDAP Desktop carries files and state, applied when inserted |
 
@@ -161,7 +161,7 @@ LE Audio's media control places the server on the source. It covers the T1 with 
 ### 10. What the protocol never requires
 
 - **An account or an online service** (SYS-047, SYS-058).
-- **Bluetooth.** Qualification costs USD 6,000 to 12,000 per design depending on membership, from 2026-03-01 ([Bluetooth SIG fees](https://www.bluetooth.com/develop-with-bluetooth/qualification-listing/qualification-listing-fees/)). It is a product decision, and the protocol works without it.
+- **Bluetooth.** Every core function works over IP links.
 - **A matching version.** Peers negotiate; an old device and a new one always connect with what both support.
 
 ### 11. Names
@@ -206,7 +206,7 @@ The exact identifiers are fixed in the specification.
 2. **Pairing:** SPAKE2 (RFC 9382) with an 8-character code (§5).
 3. **Mass storage handover:** blackbird-os ADR 0013.
 4. **Keys:** a keystore always, a TEE when available (OS-032).
-5. **Bluetooth** stays optional for the protocol. The T1 has Bluetooth (BRD-029), so the product is qualified as a whole, on a pre-qualified module; that is handled outside this RFC.
+5. **Bluetooth** stays optional for the protocol: every core function works over IP links, and Bluetooth only adds headphones, cars and an optional bootstrap.
 6. **Licence of the specification:**
    - the text under CC-BY-SA-4.0, like all OpenDAP documentation;
    - interface definitions and schemas under MPL-2.0, like the project's other schemas;
