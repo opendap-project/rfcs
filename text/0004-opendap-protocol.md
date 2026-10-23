@@ -210,7 +210,7 @@ The exact identifiers are fixed in the specification.
 6. **Licence of the specification:**
    - the text under CC-BY-SA-4.0, like all OpenDAP documentation;
    - interface definitions and schemas under MPL-2.0, like the project's other schemas;
-   - proposed, to be confirmed by the maintainers because it is a legal commitment: a royalty-free patent non-assertion for conforming implementations, so anyone can implement it.
+   - a royalty-free patent non-assertion for conforming implementations, so anyone can implement it (confirmed by the maintainers, 2026-10-23).
 
 ## Bench checks (implementation)
 
