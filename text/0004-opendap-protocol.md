@@ -1,6 +1,6 @@
 # RFC 0004: OpenDAP Protocol, version 0
 
-- **Status:** Draft
+- **Status:** Accepted (2026-10-23; decided by Claude under the maintainers' delegation, with the keystore decided by the maintainers). Bench checks remain, listed at the end
 - **Date:** 2026-10-23
 - **Affected repositories:** system (interfaces, services), blackbird-os (USB gadget, links, discovery, key storage, packages), desktop (client and background service), toolkit-cli (client), toolkit-verify (conformance suite), t1 (product requirements, LED and UI states), board (USB, radios, key holder options), ui-components (user-facing states)
 
@@ -77,12 +77,12 @@ The main USB-C port in device mode presents **one configuration** with IAD, so i
 | Mass storage | Plain files for hosts without a client (T1-065) | On |
 
 - **UAC2** (`f_uac2`): up to 10 discrete rates, containers up to 32 bits, asynchronous with explicit feedback steered from the DAC clock. At High Speed one 1024-byte microframe carries stereo well beyond 384 kHz. DoP passes unchanged; native DSD needs kernel work, carried as a patch until upstream (OS-023).
-- **Mass storage:** the kernel forbids touching an exported backing store from the device ([kernel docs](https://docs.kernel.org/usb/mass-storage.html)). So the T1 never exports its live library filesystem read-write. The proposal is that the T1 **hands over its music volume** (the card, or a music partition of the internal storage) to the host exclusively:
+- **Mass storage:** the kernel forbids touching an exported backing store from the device ([kernel docs](https://docs.kernel.org/usb/mass-storage.html)). So the T1 never exports its live library filesystem read-write. The T1 **hands over its music volume** (the card, or a music partition of the internal storage) to the host exclusively:
   - while it is handed over, the T1 keeps playing what its cache levels already hold (OS-022) and shows "Connected to a computer" with an **Eject** action;
   - on release, it re-indexes the changes incrementally;
   - when OpenDAP Desktop or the CLI is present, they use NCM instead, and the volume is not handed over.
 
-  This is the engineering point left open by T1-065, proposed here.
+  Decided in [blackbird-os ADR 0013](https://github.com/opendap-project/blackbird-os/blob/main/docs/adr/0013-usb-device-mode-and-keystore.md): the card if present, otherwise a dedicated music partition.
 - **Endpoints:** about 12 non-control endpoints for the four functions together; the RK3566 DWC3 endpoint count is **UNVERIFIED** and must be measured.
 
 ### 4. Discovery
@@ -99,13 +99,16 @@ The main USB-C port in device mode presents **one configuration** with IAD, so i
   - the other side scans or types it;
   - the listener confirms on the T1.
 
-  The code feeds a password-authenticated key exchange, so a short code gives strong keys and an eavesdropper learns nothing. The algorithm is chosen in the specification (§12).
+  The code feeds a password-authenticated key exchange, so a short code gives strong keys and an eavesdropper learns nothing:
+  - the exchange is **SPAKE2** ([RFC 9382](https://www.rfc-editor.org/rfc/rfc9382));
+  - the code is 8 characters of Crockford base32 shown as `XXXX-XXXX` (40 bits, no ambiguous letters);
+  - each code is single-use, expires after 10 minutes, and allows few attempts before a new code is needed.
 - **Per-peer keys and revocation.** Every pairing has its own keys; removing a device from any surface revokes it everywhere at the next sync.
-- **Key storage is a port.** The RK3566 has no mainline OP-TEE and its OTP is read-only to Linux ([OP-TEE platforms](https://optee.readthedocs.io/en/latest/general/platforms.html)). Version 0 therefore:
-  - keeps the key in protected storage on the filesystem, with its protection level documented;
-  - defines a hardware-backed adapter for when one exists: an OP-TEE port, a secure element, or the RP2350 coprocessor as key holder.
-
-  Pairing stays safe even if root extracts a key, through per-peer keys and revocation.
+- **Keys always go through a keystore** (OS-032, the maintainers' decision): no service handles key files.
+  - The keystore is backed by a TEE whenever the platform offers one.
+  - The RK3566 has no mainline OP-TEE and its OTP is read-only to Linux ([OP-TEE platforms](https://optee.readthedocs.io/en/latest/general/platforms.html)), so the keystore starts on protected filesystem storage ([blackbird-os ADR 0013](https://github.com/opendap-project/blackbird-os/blob/main/docs/adr/0013-usb-device-mode-and-keystore.md)).
+  - It moves to a TEE (an OP-TEE port or a hardware key holder) without changing its users.
+  - Pairing stays safe even if a key is extracted, through per-peer keys and revocation.
 - **Households.** A household is a set of owners' devices that share the collection. Members (SYS-044) get their own personal state. Permissions follow per member and per device.
 
 ### 6. Session
@@ -194,14 +197,24 @@ The exact identifiers are fixed in the specification.
 - **Matter.** Not an audio transport, and certification is for members. Possible later as a home integration at the edges.
 - **Separate APIs per surface** (a desktop API, a phone API). Rejected: features would be duplicated and drift; the one-core rule (DESK-004) points to one protocol.
 
-## Open questions
+## Decisions on the open points (2026-10-23)
 
-1. **Encoding and transport framing:** carry the device's interfaces as they are (ADR 0002), or a compact binary encoding for the network. To decide with measurements on the RK3566, as ADR 0002 required for the bus.
-2. **The pairing key exchange** algorithm and the code format (length, alphabet, expiry).
-3. **Mass storage handover:** which volumes, and what plays while handed over (§3). To confirm with the maintainers (T1-065).
-4. Driverless enumeration of the full composite on Windows 11 and macOS, and the RK3566 DWC3 endpoint count (bench).
-5. UAC2 isochronous behaviour on the RK3566 under asynchronous feedback, and host bit-exactness for DoP (bench).
-6. BLE advertising and sleep current of the Murata Type 2EL at candidate intervals (bench).
-7. A hardware key holder: OP-TEE port, secure element or the RP2350 (board decision).
-8. Bluetooth qualification for the Commercial and DIY editions (maintainers).
-9. Which licence the specification is published under.
+1. **Encoding.**
+   - Control traffic carries the device's interfaces as ADR 0002 defines them: the same calls, types and typed errors, over the authenticated channel.
+   - Bulk transfer and media streams use binary framing.
+   - A compact encoding for control replaces JSON only if measurements on the RK3566 show it is needed: the same gate ADR 0002 set for the bus.
+2. **Pairing:** SPAKE2 (RFC 9382) with an 8-character code (§5).
+3. **Mass storage handover:** blackbird-os ADR 0013.
+4. **Keys:** a keystore always, a TEE when available (OS-032).
+5. **Bluetooth** stays optional for the protocol. The T1 has Bluetooth (BRD-029), so the product is qualified as a whole, on a pre-qualified module; that is handled outside this RFC.
+6. **Licence of the specification:**
+   - the text under CC-BY-SA-4.0, like all OpenDAP documentation;
+   - interface definitions and schemas under MPL-2.0, like the project's other schemas;
+   - proposed, to be confirmed by the maintainers because it is a legal commitment: a royalty-free patent non-assertion for conforming implementations, so anyone can implement it.
+
+## Bench checks (implementation)
+
+1. Driverless enumeration of the full composite on Windows 11 and macOS, and the RK3566 DWC3 endpoint count.
+2. UAC2 isochronous behaviour on the RK3566 under asynchronous feedback, and host bit-exactness for DoP.
+3. BLE advertising and sleep current of the Murata Type 2EL at candidate intervals, before discovery defaults are set.
+4. Control-plane encoding cost on the RK3566 (decision 1).
