@@ -107,7 +107,7 @@ The main USB-C port in device mode presents **one configuration** with IAD, so i
 - **Keys always go through a keystore** (OS-032, the maintainers' decision): no service handles key files.
   - The keystore is backed by a TEE whenever the platform offers one.
   - The RK3566 has no mainline OP-TEE and its OTP is read-only to Linux ([OP-TEE platforms](https://optee.readthedocs.io/en/latest/general/platforms.html)), so the keystore starts on protected filesystem storage ([blackbird-os ADR 0013](https://github.com/opendap-project/blackbird-os/blob/main/docs/adr/0013-usb-device-mode-and-keystore.md)).
-  - It moves to a TEE (an OP-TEE port or a hardware key holder) without changing its users.
+  - It moves to hardware without changing its users: a key holder on the board (BRD-059, a discrete TPM 2.0 proposed), or an OP-TEE port.
   - Pairing stays safe even if a key is extracted, through per-peer keys and revocation.
 - **Households.** A household is a set of owners' devices that share the collection. Members (SYS-044) get their own personal state. Permissions follow per member and per device.
 
