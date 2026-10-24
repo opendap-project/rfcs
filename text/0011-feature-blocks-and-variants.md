@@ -82,5 +82,5 @@ Every OpenDAP device declares its variants from these kinds. The T1 is the first
 
 ## Open questions
 
-- Whether KiCad 10's own variant support covers rule 6, or the variant files drive a generator around it (**UNVERIFIED**).
+- KiCad 10.0.7 has design variants: per-variant DNP, BOM and placement exclusion, field overrides and fab outputs with `--variant`; ERC, DRC and the netlist take no variant. Rule 7 therefore uses KiCad's variants for the BOM and fab outputs and a generator (`odapkit variant`) for devicetree, the device description, the verification plan and the absent-state check (board feature-blocks spec §6).
 - How far layout blocks can be shared between projects in KiCad 10 (also open in the integration and verification spec).
