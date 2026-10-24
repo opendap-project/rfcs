@@ -1,6 +1,6 @@
 # RFC 0011: Feature blocks and hardware variants
 
-- **Status:** Accepted (2026-10-24). The intent was set by the maintainers: build the ideal prototype with every module and part wanted, down to the most specific ones (TPM, haptics), and keep a modular, reusable architecture that can enable, disable, change or modify any of them when something is not ready or not available, so the design stays resilient to change and integral; in simulation it serves comparison and co-design, in prototypes cost, performance, power, radio and thermal tuning, and in the product variants (lite versions, application-specific hardware, other chipsets or radios). The mechanics were decided by Claude under their delegation. Written by Claude.
+- **Status:** Accepted (2026-10-24). The intent was set by the maintainers: build the ideal prototype with every module and part wanted, down to the most specific ones (TPM, haptics), and keep a modular, reusable architecture that can enable, disable, change or modify any of them when something is not ready or not available, so the design stays resilient to change and integral; in simulation it serves comparison and co-design, in prototypes cost, performance, power, radio and thermal tuning, and in the product variants (lite or higher-tier versions, application-specific hardware, other chipsets or radios, the audio chipset included). The mechanics were decided by Claude under their delegation. Written by Claude.
 - **Date:** 2026-10-24
 - **Affected repositories:** board, faceplate-touch, hat-standard, kicad-lib, toolkit-hardware, toolkit-hooks, t1, system, virtual-devices.
 
@@ -37,10 +37,11 @@ A block is the smallest unit that can be enabled, disabled, swapped or measured 
 2. **Absent is a designed state.** Every block passes the absent-state check: with the block unfitted, no net it touches floats, no IO is back-powered, no bus is held, no boot strap changes. The schematic gives the defaults; a tool checks them per variant.
 3. **Blocks own their power.** Each optional block sits behind a switch or enable (load switch, regulator enable or 0 Ω link) and has a measurement point, so power, temperature and radio effects can be attributed per block and the block can be turned off in software or hardware.
 4. **Boundaries are interfaces.** A block refers only to its interface nets. An alternate keeps the interface or declares the difference; the rest of the board does not change.
-5. **Must blocks stay.** The audio chain, the power-safety margins (BRD-049) and every must requirement are fitted in every product variant (board ADR 0013); variants differ in should blocks, alternates and parameters.
-6. **Variants are data.** A variant is a file listing blocks (`fit`, `dnp`, `alternate`) and parameters. The BOM, pick-and-place, devicetree overlays, the device description and the verification plan of each variant are generated from it. Nothing is edited by hand per variant.
-7. **Software follows, never assumes.** Blackbird OS enables what the variant's description and the hardware's answers report (SYS-040, T1-045); a block that is absent is absent from the capabilities, not an error.
-8. **Every variant is verified on its own.** Each variant carries its target quality level (RFC 0010) and runs the rows of the integration matrices that its blocks touch; results are never inherited from another variant.
+5. **Promises are fixed, parts are not.** Any block can change in a variant, the audio chipset, the SoC or the radio included. What every variant keeps is its own product promise: the requirements it is declared against, the audiophile experience at 100 % (T1-040), the power-safety margins (BRD-049) and its quality level. A variant that replaces a block meets or exceeds what the block's requirements ask; within one product line, a lower-cost variant drops should blocks, never the audio promise (board ADR 0013).
+6. **Boundaries are drawn for the largest swap.** A block's interface is drawn so its plausible replacements fit behind it: the audio block behind I2S/TDM/DSD, its clocks, control bus, supplies and outputs, not behind one DAC's pins; the radio behind SDIO, UART, PCM, supplies and RF ports. A swap that the interface cannot hold is a new block revision, with the rest of the board unchanged.
+7. **Variants are data.** A variant is a file listing blocks (`fit`, `dnp`, `alternate`) and parameters. The BOM, pick-and-place, devicetree overlays, the device description and the verification plan of each variant are generated from it. Nothing is edited by hand per variant.
+8. **Software follows, never assumes.** Blackbird OS enables what the variant's description and the hardware's answers report (SYS-040, T1-045); a block that is absent is absent from the capabilities, not an error.
+9. **Every variant is verified on its own.** Each variant carries its target quality level (RFC 0010) and runs the rows of the integration matrices that its blocks touch; results are never inherited from another variant.
 
 ### 3. Variants of the T1
 
@@ -49,6 +50,7 @@ A block is the smallest unit that can be enabled, disabled, swapped or measured 
 | `full` | Prototype 1, the ideal prototype | Every block, every *should* part, every instrumentation footprint fitted |
 | `production` | Commercial and DIY editions (T1-004) | Board ADR 0013 population; instrumentation links fitted as 0 Ω |
 | `lite` (proposal) | A lower-cost T1 | *Should* blocks left off where they move the price materially (BRD-053 rule); the audio chain unchanged |
+| higher-tier (as needed) | A variant above the T1's promise | Alternate blocks where they raise the promise: another audio chipset or output stage, more memory, another radio |
 | `<application>` (as needed) | Application-specific hardware, another radio or chipset | Alternate blocks; a different SoC is a different H0/H1 board that reuses every block it can |
 
 ### 4. Uses
