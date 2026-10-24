@@ -6,7 +6,7 @@
 
 ## Summary
 
-Every function of an OpenDAP board is a **feature block**: one hierarchical schematic sheet and one layout block, with a declared interface, power domain, safe state when absent, measurement point, alternates and software description. A **variant** is a named selection of blocks and alternates. The first prototype is the **full variant**: every block fitted and instrumented. Every other variant (production, lite, application-specific, another radio or chipset) is derived from it by disabling, swapping or re-parameterising blocks, never by redrawing the board's other blocks. The same block is used in the domain modules (integration level L2), in simulation and in every board that needs the function.
+Every function of an OpenDAP board is a **feature block**: one hierarchical schematic sheet and one layout block, with a declared interface, power domain, safe state when absent, measurement point, alternates and software description. This is how every OpenDAP device is built; the T1 is the first. A **variant** is a named selection of blocks and alternates. A device's first prototype is its **full variant**: every block fitted and instrumented. Every other variant (production, lite, application-specific, another radio or chipset) is derived from it by disabling, swapping or re-parameterising blocks, never by redrawing the board's other blocks. The same block is used in the domain modules (integration level L2), in simulation and in every board that needs the function.
 
 ## Motivation
 
@@ -43,14 +43,16 @@ A block is the smallest unit that can be enabled, disabled, swapped or measured 
 8. **Software follows, never assumes.** Blackbird OS enables what the variant's description and the hardware's answers report (SYS-040, T1-045); a block that is absent is absent from the capabilities, not an error.
 9. **Every variant is verified on its own.** Each variant carries its target quality level (RFC 0010) and runs the rows of the integration matrices that its blocks touch; results are never inherited from another variant.
 
-### 3. Variants of the T1
+### 3. Variant kinds
 
-| Variant | Purpose | Content |
+Every OpenDAP device declares its variants from these kinds. The T1 is the first application: its block catalog and variant files live in the board repository.
+
+| Kind | Purpose | Content |
 |---|---|---|
-| `full` | Prototype 1, the ideal prototype | Every block, every *should* part, every instrumentation footprint fitted |
-| `production` | Commercial and DIY editions (T1-004) | Board ADR 0013 population; instrumentation links fitted as 0 Ω |
-| `lite` (proposal) | A lower-cost T1 | *Should* blocks left off where they move the price materially (BRD-053 rule); the audio chain unchanged |
-| higher-tier (as needed) | A variant above the T1's promise | Alternate blocks where they raise the promise: another audio chipset or output stage, more memory, another radio |
+| `full` | The first prototype of a device, the ideal prototype | Every block, every *should* part, every instrumentation footprint fitted |
+| `production` | The device's editions | The device's production population; instrumentation links fitted as 0 Ω |
+| `lite` | A lower-cost version of a device | *Should* blocks left off where they move the price materially (BRD-053 rule); the audio chain unchanged |
+| higher-tier | A version above a device's promise | Alternate blocks where they raise the promise: another audio chipset or output stage, more memory, another radio |
 | `<application>` (as needed) | Application-specific hardware, another radio or chipset | Alternate blocks; a different SoC is a different H0/H1 board that reuses every block it can |
 
 ### 4. Uses

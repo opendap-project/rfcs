@@ -20,11 +20,11 @@ The project now has many sources of demands: PCB design constraints (BRD-060), f
 |---|---|---|---|
 | **Q0** | Bench-safe | Safe to power on a bench by its developers: protections in place, no fab-rule or electrical-rule error, battery handled under its safety rules | Coupons, first module boards |
 | **Q1** | Prototype | Works as designed and can be handed to other developers: product DRC errors at zero, the evaluation rows of its integration level pass, every warning recorded | Modules, prototype 1 |
-| **Q2** | Pre-compliance | Fit to leave the lab in small numbers: every T1-048 hard limit met, pre-compliance scans pass with margin, ESD and acoustic output measured, pack transport-safe | Pilot units, the DIY kit |
-| **Q3** | Compliant | A product: every mandatory certification for the declared markets passed, technical file complete, every T1-048 warning cleared | Commercial edition |
-| **Q4** | Reference | The highest aim: T1-048 ideal values, full craft standard, wide margins, every warning and debt item closed | The goal every revision moves toward |
+| **Q2** | Pre-compliance | Fit to leave the lab in small numbers: every hard limit of the product's experience thresholds met (T1-048 for the T1), pre-compliance scans pass with margin, ESD and acoustic output measured, pack transport-safe | Pilot units, kits |
+| **Q3** | Compliant | A product: every mandatory certification for the declared markets passed, technical file complete, every warning threshold cleared | Products on sale |
+| **Q4** | Reference | The highest aim: ideal values of every threshold, full craft standard, wide margins, every warning and debt item closed | The goal every revision moves toward |
 
-T1-048 maps onto the levels: hard limits are mandatory from Q2, warnings from Q3, ideal values at Q4. Safety limits (BRD-049) are mandatory from Q0.
+Products that set three thresholds per metric (ideal, warning, hard limit; T1-048 for the T1) map them onto the levels: hard limits are mandatory from Q2, warnings from Q3, ideal values at Q4. Safety limits (BRD-049) are mandatory from Q0.
 
 ### 2. Rules
 
