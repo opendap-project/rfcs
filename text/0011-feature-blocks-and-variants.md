@@ -53,15 +53,20 @@ Every OpenDAP device declares its variants from these kinds. The T1 is the first
 | `production` | The device's editions | The device's production population; instrumentation links fitted as 0 Ω |
 | `lite` | A lower-cost version of a device | *Should* blocks left off where they move the price materially (BRD-053 rule); the audio chain unchanged |
 | higher-tier | A version above a device's promise | Alternate blocks where they raise the promise: another audio chipset or output stage, more memory, another radio |
+| regional | A product variant optimised for one regulatory market | The parts each market certifies best (radio antennas, transmit-power tables, transmitters fitted), with the rest of the device unchanged |
 | `<application>` (as needed) | Application-specific hardware, another radio or chipset | Alternate blocks; a different SoC is a different H0/H1 board that reuses every block it can |
 
-### 4. Uses
+### 4. Regulatory strategy
+
+Set by the maintainers (2026-10-24). Prototypes (RFC 0010 Q1) use the part with the easiest access and best availability on the market; certification lists do not constrain them. The layout keeps every certified option open (footprints, keep-outs, matching positions), so no regional choice needs a respin. Products (Q3) are regional variants, each optimised for its market's regime: its certified parts, its transmit-power tables, its transmitters. Each regional variant is verified and certified on its own (rule 9).
+
+### 5. Uses
 
 - **Simulation and co-design:** a block's L1 studies run per alternate and parameter set (`odapkit sim` checks per variant), so options are compared on the same criteria before parts are bought.
 - **Prototypes:** blocks are enabled one at a time at bring-up; per-block current and temperature drive cost, power, radio and thermal tuning; a part that is late or fails is disabled without stopping the rest.
 - **Product:** variants are built from data; each one is verified and certified on its own (T1-071), with the certified variant's transmitters limited to granted parts (T1-077).
 
-### 5. Changes per repository
+### 6. Changes per repository
 
 | Repository | Change |
 |---|---|
