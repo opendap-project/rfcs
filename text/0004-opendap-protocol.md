@@ -1,6 +1,7 @@
 # RFC 0004: OpenDAP Protocol, version 0
 
 - **Status:** Accepted (2026-10-23). Bench checks remain, listed at the end.
+- **Amended by:** [RFC 0017](0017-naming-and-topology.md) (§11: device interfaces are `cc.opendap.Blackbird.<Module>`; crates follow its identifier table)
 - **Date:** 2026-10-23
 - **Affected repositories:** system (interfaces, services), blackbird-os (USB gadget, links, discovery, key storage, packages), desktop (client and background service), toolkit-cli (client), toolkit-verify (conformance suite), t1 (product requirements, LED and UI states), board (USB, radios, key holder options), blackbird-ui (user-facing states)
 

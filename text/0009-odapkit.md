@@ -1,6 +1,7 @@
 # RFC 0009: odapkit, the maintainers' command, and its boundary with opendap
 
 - **Status:** Accepted (2026-10-23).
+- **Amended by:** [RFC 0017](0017-naming-and-topology.md) (the maintainers' command becomes `odw`, discovered through `tools.toml`; applied at the `tools` cut)
 - **Date:** 2026-10-23
 - **Affected repositories:** toolkit-host, toolkit-image, cli, virtual-devices, blackbird-os, system, toolkit-verify, claude-plugins.
 

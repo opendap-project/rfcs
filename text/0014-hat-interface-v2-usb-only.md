@@ -1,6 +1,6 @@
 # RFC 0014: HAT interface v2: HATs are USB only
 
-- **Status:** Draft. The interface decision is taken ([hat-standard ADR 0006](https://github.com/opendap-project/hat-standard/blob/main/docs/adr/0006-hats-are-usb-only.md)); the board and HAT repository changes below are listed, not applied.
+- **Status:** Accepted (2026-10-25), with [hat-standard ADR 0006](https://github.com/opendap-project/hat-standard/blob/main/docs/adr/0006-hats-are-usb-only.md). Recorded in hat-standard, board and hat-camera; the other repository changes below are listed, not applied.
 - **Date:** 2026-10-25
 - **Affected repositories:** hat-standard (owner of the interface), board, hat-camera, hat-nas, hat-radio, hat-oscilloscope, hat-vna, hat-recorder, hat-powerbank, system, toolkit-verify.
 

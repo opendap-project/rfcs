@@ -1,7 +1,7 @@
 # RFC 0008: Repositories by audience and domain
 
 - **Status:** Accepted (2026-10-23).
-- **Amended by:** [RFC 0009](0009-odapkit.md) (the maintainers' tools are `odapkit-<tool>`), [RFC 0012](0012-composer-and-os-shell.md) (`odap-shell` is `odap-composer`)
+- **Amended by:** [RFC 0009](0009-odapkit.md) (the maintainers' tools are `odapkit-<tool>`), [RFC 0012](0012-composer-and-os-shell.md) (`odap-shell` is `odap-composer`), [RFC 0017](0017-naming-and-topology.md) (one repository per root and names from the hierarchy, applied per root at its cut)
 - **Date:** 2026-10-23
 - **Affected repositories:** workspace, cli (from toolkit-cli), toolkit-image (new), toolkit-host, toolkit-verify, virtual-devices, blackbird-os, system, blackbird-ui, t1, board, case, faceplates, claude-plugins, .github.
 

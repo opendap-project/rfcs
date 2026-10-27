@@ -1,6 +1,7 @@
 # RFC 0012: The composer and the OS Shell
 
 - **Status:** Accepted (2026-10-24).
+- **Amended by:** [RFC 0017](0017-naming-and-topology.md) (renames only: `blackbird-composer`, `/run/blackbird/composer/`; applied at the `blackbird` cut)
 - **Date:** 2026-10-24
 - **Affected repositories:** system, blackbird-os, blackbird-ui, virtual-devices, toolkit-host, toolkit-image, toolkit-verify, rfcs.
 

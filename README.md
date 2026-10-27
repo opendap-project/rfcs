@@ -33,9 +33,12 @@ Generated from each RFC's title and status (`odapkit docs index text --readme RE
 | [RFC 0011: Feature blocks and hardware variants](text/0011-feature-blocks-and-variants.md) | Accepted (2026-10-24). |
 | [RFC 0012: The composer and the OS Shell](text/0012-composer-and-os-shell.md) | Accepted (2026-10-24). |
 | [RFC 0013: Faceplate interface v1](text/0013-faceplate-interface-v1.md) | Accepted (2026-10-24). |
-| [RFC 0014: HAT interface v2: HATs are USB only](text/0014-hat-interface-v2-usb-only.md) | Draft. The interface decision is taken ([hat-standard ADR 0006](https://github.com/opendap-project/hat-standard/blob/main/docs/adr/0006-hats-are-usb-only.md)); the board and HAT repository changes below are listed, not applied. |
+| [RFC 0014: HAT interface v2: HATs are USB only](text/0014-hat-interface-v2-usb-only.md) | Accepted (2026-10-25), with [hat-standard ADR 0006](https://github.com/opendap-project/hat-standard/blob/main/docs/adr/0006-hats-are-usb-only.md). Recorded in hat-standard, board and hat-camera; the other repository changes below are listed, not applied. |
 | [RFC 0015: HAT connector: pogo field, Mill-Max 0965, and the USB-C port HAT](text/0015-hat-connector-pogo-field-and-usb-c-port-hat.md) | Accepted (2026-10-25). Applied in hat-standard, board and t1; the case changes are listed, not applied. |
 | [RFC 0016: Outdoor HAT repository](text/0016-outdoor-hat.md) | Accepted (2026-10-25). The repository is created with its requirements; the changes in other repositories are listed, not applied. |
+| [RFC 0017: Naming and topology: one repository per root, names from the hierarchy](text/0017-naming-and-topology.md) | Accepted (2026-10-27). The rules apply to each root at its cut (§7); until a root is cut, its repositories keep today's names. |
+| [RFC 0018: The digital thread: records, owners and schemas](text/0018-digital-thread.md) | Accepted (2026-10-27). The records are applied one document at a time (§4 rule 4); the repository changes in §8 are listed, not applied. |
+| [RFC 0019: Versioning and releases](text/0019-versioning-and-releases.md) | Accepted (2026-10-27). Nothing is tagged yet; the repository changes in §11 are listed, not applied. |
 <!-- index:end -->
 
 ## License
