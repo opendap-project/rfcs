@@ -52,7 +52,7 @@ The electronics integration and verification spec (M-HAT, V2-H rows, CORE + HAT)
 - **Data:** a USB 3 hub on the HAT carries the OpenDAP HAT identity capability (interface v2 §7) and feeds one downstream USB-C receptacle: USB 3 Gen 1 and USB 2.0, reversible (`CC1`, `CC2`, SuperSpeed orientation mux). The device stays USB host, so the receptacle is a host port: it cannot connect the device to a computer.
 - **Power:** a dual-role HAT (interface v2 §5.2) with its own USB PD controller on the receptacle. It sinks from the device and sources what is plugged in, within the device's offer (T1: 5 V, up to 1.5 A, less the HAT's own draw); with a charger plugged in, it becomes a USB PD source to the device at the voltages the device accepts (T1: 5 V). The receptacle's `VBUS` and `CC` are protected as an external USB-C port.
 - **Firmware:** every programmable chip recoverable over USB (interface v2 §8).
-- **Where:** hat-standard `reference-designs/usb-c-port/` (electronics and case). Status: proposed, not started.
+- **Where:** hat-standard `reference-designs/usb-c-port/` (electronics and case). Status: proposed; no design files exist yet.
 
 ## Alternatives
 
