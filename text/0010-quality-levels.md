@@ -1,6 +1,7 @@
 # RFC 0010: Quality levels Q0–Q4, incremental and ratcheted
 
 - **Status:** Accepted (2026-10-24).
+- **Amended by:** [RFC 0018](0018-digital-thread.md) (§7: Q stays the quality scale; the other level scales get their own letters, I, V, T, C and H, so the HAT compatibility levels L1–L3 are written C1–C3)
 - **Date:** 2026-10-24
 - **Affected repositories:** t1, board, faceplate-touch, hat-standard, kicad-lib, parts-lib, toolkit-hardware, toolkit-hooks, toolkit-verify; later every hardware repository.
 
