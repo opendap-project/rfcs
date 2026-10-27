@@ -2,7 +2,7 @@
 
 - **Status:** Accepted (2026-10-27). Nothing is tagged yet; the repository changes in §11 are listed, not applied.
 - **Date:** 2026-10-27
-- **Affected repositories:** every repository that tags or releases; first toolkit-host, toolkit-hardware, toolkit-hooks, board, t1, faceplate-touch, case, hat-standard, system, blackbird-os, cli, desktop, virtual-devices, rfcs. The names are today's; [RFC 0017](0017-naming-and-topology.md) groups them into one repository per root, which this RFC anticipates (§2).
+- **Affected repositories:** every repository that tags or releases (these first): toolkit-host, toolkit-hardware, toolkit-hooks, board, t1, faceplate-touch, case, hat-standard, system, blackbird-os, cli, desktop, virtual-devices, rfcs (the names are today's: [RFC 0017](0017-naming-and-topology.md) groups them into one repository per root, which this RFC anticipates, §2).
 
 ## Summary
 

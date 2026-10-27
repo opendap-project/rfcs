@@ -3,7 +3,7 @@
 - **Status:** Accepted (2026-10-27). The records are applied one document at a time (§4 rule 4); the repository changes in §8 are listed, not applied.
 - **Date:** 2026-10-27
 - **Amends:** [RFC 0010](0010-quality-levels.md) (letters of the level scales, §7; the quality levels are unchanged)
-- **Affected repositories:** toolkit-host, toolkit-hardware, toolkit-verify, toolkit-hooks, rfcs, t1, board, case, faceplate-touch, hat-standard, parts-lib, kicad-lib, system, virtual-devices; later every component repository. The names are today's; [RFC 0017](0017-naming-and-topology.md) groups them into roots, which changes paths, not this RFC.
+- **Affected repositories:** toolkit-host, toolkit-hardware, toolkit-verify, toolkit-hooks, rfcs, t1, board, case, faceplate-touch, hat-standard, parts-lib, kicad-lib, system, virtual-devices (later every component repository; the names are today's: [RFC 0017](0017-naming-and-topology.md) groups them into roots, which changes paths, not this RFC).
 
 ## Summary
 

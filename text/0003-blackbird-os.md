@@ -2,7 +2,7 @@
 
 - **Status:** Accepted (2026-10-23).
 - **Date:** 2026-10-23
-- **Affected repositories:** every repository that names the operating system: blackbird-os (formerly opendap-os), workspace, ui-components, toolkit-cli, claude-plugins, system, t1, board, the HATs, faceplates, parts-lib, toolkit-host, toolkit-hardware, toolkit-verify, .github
+- **Affected repositories:** every repository that names the operating system: blackbird-os (formerly opendap-os), workspace, blackbird-ui (formerly ui-components), toolkit-cli, claude-plugins, system, t1, board, hat-standard, hat-camera, hat-nas, hat-oscilloscope, hat-powerbank, hat-radio, hat-recorder, hat-vna (the HATs), faceplate-touch, faceplate-classic, faceplate-cassette (the faceplates), parts-lib, toolkit-host, toolkit-hardware, toolkit-verify, .github
 
 ## Summary
 

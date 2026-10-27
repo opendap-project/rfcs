@@ -9,7 +9,7 @@ A change inside one repository does not need an RFC: it goes straight to that re
 1. Copy `0000-template.md` to `text/NNNN-short-title.md` with the next free number, status **Draft**, and open a pull request.
 2. Every affected repository's domain reviews it (electronics, mechanics, firmware, software, OS).
 3. The maintainers accept or reject it. An accepted RFC is merged with status **Accepted**.
-4. Each affected repository records the outcome in its own `docs/` (requirements, and an ADR where a decision was taken), linking back to the RFC. The RFC becomes **Implemented** when all of them have; `odapkit docs rfc-status` lists, for each RFC, the affected repositories that have recorded it and those that have not.
+4. Each affected repository records the outcome in its own `docs/` (requirements, and an ADR where a decision was taken), linking back to the RFC; a repository without `docs/`, such as the workspace root or this one, records it in its `README.md` or `CONTRIBUTING.md`. The RFC becomes **Implemented** when all of them have; `odapkit docs rfc-status` lists, for each RFC, the affected repositories that have recorded it and those that have not.
 
 RFCs that only concern services outside the public repositories are kept elsewhere, with the same template.
 
