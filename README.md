@@ -39,6 +39,7 @@ Generated from each RFC's title and status (`odapkit docs index text --readme RE
 | [RFC 0017: Naming and topology: one repository per root, names from the hierarchy](text/0017-naming-and-topology.md) | Accepted (2026-10-27). The rules apply to each root at its cut (§7); until a root is cut, its repositories keep today's names. |
 | [RFC 0018: The digital thread: records, owners and schemas](text/0018-digital-thread.md) | Accepted (2026-10-27). The records are applied one document at a time (§4 rule 4); the repository changes in §8 are listed, not applied. |
 | [RFC 0019: Versioning and releases](text/0019-versioning-and-releases.md) | Accepted (2026-10-27). Nothing is tagged yet; the repository changes in §11 are listed, not applied. |
+| [RFC 0020: One input model for the device and the host](text/0020-input-wire-model.md) | Accepted (2026-10-27). |
 <!-- index:end -->
 
 ## Accepted RFCs recorded here
