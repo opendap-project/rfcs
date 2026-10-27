@@ -14,7 +14,7 @@
 
 ## Proposal
 
-<What changes, in each affected repository. For an interface (HAT Case Standard, faceplate interface, component export contract), state the interface version this produces and whether it stays compatible.>
+<What changes, in each affected repository. For an interface (OpenDAP HAT Standard, faceplate interface, component export contract), state the interface version this produces and whether it stays compatible.>
 
 ## Alternatives
 

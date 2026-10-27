@@ -1,6 +1,6 @@
 # RFCs
 
-Proposals for changes that span more than one OpenDAP repository, or that change an interface others build against: the HAT Case Standard, the faceplate interface, the component export contract, the bus API.
+Proposals for changes that span more than one OpenDAP repository, or that change an interface others build against: the OpenDAP HAT Standard, the faceplate interface, the component export contract, the bus API.
 
 A change inside one repository does not need an RFC: it goes straight to that repository's requirements or ADRs.
 
