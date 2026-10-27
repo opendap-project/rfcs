@@ -14,7 +14,7 @@
 
 ## Proposal
 
-<What changes, in each affected repository. For an interface (OpenDAP HAT Standard, faceplate interface, component export contract), state the interface version this produces and whether it stays compatible.>
+<What changes, in each affected repository. For an interface (OpenDAP HAT Standard, faceplate interface, component export contract), state the interface version this produces, written `<iface>/vN.M` as [RFC 0019](https://github.com/opendap-project/rfcs/blob/main/text/0019-versioning-and-releases.md) §4 defines, and whether it stays compatible.>
 
 ## Alternatives
 

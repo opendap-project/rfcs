@@ -41,6 +41,16 @@ Generated from each RFC's title and status (`odapkit docs index text --readme RE
 | [RFC 0019: Versioning and releases](text/0019-versioning-and-releases.md) | Accepted (2026-10-27). Nothing is tagged yet; the repository changes in §11 are listed, not applied. |
 <!-- index:end -->
 
+## Accepted RFCs recorded here
+
+This repository has no `docs/`, so it records here the outcome of each accepted RFC that changes it.
+
+- [RFC 0005](text/0005-blackbird-ui.md): links to the design system point to `blackbird-ui`; earlier RFCs keep their text as records.
+- [RFC 0012](text/0012-composer-and-os-shell.md): RFC 0008 and RFC 0009 keep their text as records, and their `odap-shell` reads as `odap-composer`; RFC 0008 names RFC 0012 in its **Amended by** line.
+- [RFC 0017](text/0017-naming-and-topology.md): this repository keeps its name and is its own root, `rfcs`.
+- [RFC 0018](text/0018-digital-thread.md): RFC 0010 names it in its **Amended by** line: Q stays the quality scale, and the HAT compatibility levels L1–L3 in RFC 0010's open question read C1–C3.
+- [RFC 0019](text/0019-versioning-and-releases.md): the template asks a change to an interface for the version it produces, written `<iface>/vN.M` (RFC 0019 §4).
+
 ## License
 
 All content is **Creative Commons Attribution-ShareAlike 4.0** (`CC-BY-SA-4.0`), following the [REUSE](https://reuse.software) layout.
