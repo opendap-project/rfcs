@@ -24,7 +24,7 @@ Generated from each RFC's title and status (`odapkit docs index text --readme RE
 | [RFC 0002: Rust crate architecture standard](text/0002-rust-crate-architecture.md) | Accepted (2026-10-22). |
 | [RFC 0003: Rename OpenDAP OS to Blackbird OS](text/0003-blackbird-os.md) | Accepted (2026-10-23). |
 | [RFC 0004: OpenDAP Protocol, version 0](text/0004-opendap-protocol.md) | Accepted (2026-10-23). Bench checks remain, listed at the end. |
-| [RFC 0005: Rename blackbird-ui to Blackbird UI](text/0005-blackbird-ui.md) | Accepted (2026-10-23). |
+| [RFC 0005: Rename ui-components to Blackbird UI](text/0005-blackbird-ui.md) | Accepted (2026-10-23). |
 | [RFC 0006: Development workflow: build on the host, run on the device](text/0006-development-workflow.md) | Accepted (2026-10-23). |
 | [RFC 0007: Virtual devices in their own repository](text/0007-virtual-devices.md) | Accepted (2026-10-23). |
 | [RFC 0008: Repositories by audience and domain](text/0008-repository-restructure.md) | Accepted (2026-10-23). |

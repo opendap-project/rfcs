@@ -1,9 +1,9 @@
-# RFC 0005: Rename blackbird-ui to Blackbird UI
+# RFC 0005: Rename ui-components to Blackbird UI
 
 - **Status:** Accepted (2026-10-23).
 - **Date:** 2026-10-23
 - **Affected repositories:**
-  - blackbird-ui (becomes blackbird-ui);
+  - ui-components (becomes blackbird-ui);
   - workspace;
   - system, t1, rfcs, blackbird-os, case;
   - toolkit-verify, toolkit-hardware, blender-lib.
@@ -14,7 +14,7 @@ The repository that holds the Engineered Matter design system, its tokens, icons
 
 ## Motivation
 
-`blackbird-ui` described one part of the repository's content. It now holds:
+`ui-components` described one part of the repository's content. It now holds:
 
 - the design system specification;
 - the tokens and OpenDAP Icons;
@@ -24,14 +24,14 @@ It is the product UI of Blackbird OS (system ADR 0005, ADR 0006), and its name s
 
 ## Proposal
 
-- **Repository:** `opendap-project/blackbird-ui` becomes `opendap-project/blackbird-ui`; GitHub redirects the old URL. The workspace folder `public/blackbird-ui` becomes `public/blackbird-ui`, and `repos.tsv` follows.
-- **References:** every link and path to `blackbird-ui` in the affected repositories points to `blackbird-ui`. The design system keeps its title, "Engineered Matter — Design System".
+- **Repository:** `opendap-project/ui-components` becomes `opendap-project/blackbird-ui`; GitHub redirects the old URL. The workspace folder `public/ui-components` becomes `public/blackbird-ui`, and `repos.tsv` follows.
+- **References:** every link and path to `ui-components` in the affected repositories points to `blackbird-ui`. The design system keeps its title, "Engineered Matter — Design System".
 - **Slint library name:** the design-system library that activities and templates import is `@blackbird-ui`. Crate names (`opendap-ui`, `opendap-*`) are unchanged, as RFC 0003 kept them.
 - **Unchanged:** requirement IDs (`DS-`), token names, icon names, the licence layout.
 
 ## Alternatives
 
-- **Keep `blackbird-ui`.** Not chosen: it undersells the repository and does not match `blackbird-os`.
+- **Keep `ui-components`.** Not chosen: it undersells the repository and does not match `blackbird-os`.
 - **Name it after the design system (`engineered-matter`).** Not chosen: the repository is the OS's UI, of which the design system is one part.
 
 ## Open questions
