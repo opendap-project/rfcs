@@ -4,7 +4,7 @@
 - **Date:** 2026-10-27
 - **Affected repositories:** every public repository: workspace, rfcs, claude-plugins, .github; blackbird-os, system, blackbird-ui, virtual-devices (to the `blackbird` root); t1, board, case, faceplate-touch, faceplate-classic, faceplate-cassette (to the `t1` root); hat-standard, hat-camera, hat-nas, hat-oscilloscope, hat-outdoor, hat-powerbank, hat-radio, hat-recorder, hat-vna (to the `hats` root); kicad-lib, parts-lib, freecad-lib, blender-lib (to the `libs` root); toolkit-host, toolkit-image, toolkit-hardware, toolkit-verify, toolkit-hooks (to the `tools` root); cli, desktop (to the `host` root).
 - **Amends:** [RFC 0004](0004-opendap-protocol.md) §11, [RFC 0008](0008-repository-restructure.md), [RFC 0009](0009-odapkit.md), [RFC 0012](0012-composer-and-os-shell.md) (renames only).
-- **Related:** [RFC 0018](0018-digital-thread.md) (records and schemas), [RFC 0019](0019-versioning-and-releases.md) (versioning and releases), the [command standard](https://github.com/opendap-project/toolkit-host/blob/main/docs/specs/command-standard.md) (toolkit-host).
+- **Related:** [RFC 0018](0018-digital-thread.md) (records and schemas), [RFC 0019](0019-versioning-and-releases.md) (versioning and releases), the [command standard](https://github.com/opendap-project/tools/blob/main/host/docs/specs/command-standard.md) (toolkit-host).
 
 ## Summary
 
@@ -79,7 +79,7 @@ Every tool declares its audience and stability in its root's `tools.toml`; `<com
 
 ### 5. Tool graduation
 
-A maintainer tool that developers need **graduates**: it becomes an `opendap-<tool>` plugin with `audience = "developer"`, its old name is kept as a deprecated alias for one minor release (`replaces` in `tools.toml`), and it stops reading maintainer-only paths or variables. The first graduates are `cross`, `deploy`, `dev-key`, the sysroot's install step, and the emulator (`odap-vdev` → `opendap emulator`). Building the sysroot and building images stay maintainer tools. Tool names, `tools.toml`, help, `--json`, exit codes and the conformance test are specified in the [command standard](https://github.com/opendap-project/toolkit-host/blob/main/docs/specs/command-standard.md), accepted with this RFC (toolkit-host today, `tools/workspace` after the `tools` cut).
+A maintainer tool that developers need **graduates**: it becomes an `opendap-<tool>` plugin with `audience = "developer"`, its old name is kept as a deprecated alias for one minor release (`replaces` in `tools.toml`), and it stops reading maintainer-only paths or variables. The first graduates are `cross`, `deploy`, `dev-key`, the sysroot's install step, and the emulator (`odap-vdev` → `opendap emulator`). Building the sysroot and building images stay maintainer tools. Tool names, `tools.toml`, help, `--json`, exit codes and the conformance test are specified in the [command standard](https://github.com/opendap-project/tools/blob/main/host/docs/specs/command-standard.md), accepted with this RFC (toolkit-host today, `tools/workspace` after the `tools` cut).
 
 ### 6. What this amends
 

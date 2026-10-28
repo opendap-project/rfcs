@@ -3,7 +3,7 @@
 - **Status:** Accepted (2026-10-23).
 - **Date:** 2026-10-23
 - **Affected repositories:**
-  - toolkit-host (the [development workflow spec](https://github.com/opendap-project/toolkit-host/blob/main/docs/specs/development-workflow.md), `Brewfile`, `setup.sh`);
+  - toolkit-host (the [development workflow spec](https://github.com/opendap-project/tools/blob/main/host/docs/specs/development-workflow.md), `Brewfile`, `setup.sh`);
   - blackbird-os (the `sysroot` profile, `build/dap-sysroot.sh`, the shell's session in the `qemu` profile);
   - system (the Rust workspace, `rust-toolchain.toml`, `scripts/cross.sh`, `scripts/deploy.sh`, the first crates);
   - blackbird-ui (`tokens/generate.py` and its `export/`, `fonts/`).
@@ -35,7 +35,7 @@ OpenDAP software is written, built and tested on the developer host.
 
 ## Proposal
 
-The full process is in the [development workflow spec](https://github.com/opendap-project/toolkit-host/blob/main/docs/specs/development-workflow.md). In short:
+The full process is in the [development workflow spec](https://github.com/opendap-project/tools/blob/main/host/docs/specs/development-workflow.md). In short:
 
 | Repository | Change |
 |---|---|
