@@ -15,7 +15,7 @@ The **OpenDAP Protocol** is how a listener's devices work together: the T1, othe
 - files, updates, backups and diagnostics;
 - pairing, between devices of the same owner or household.
 
-It runs over IP on whatever link is present (the LAN, the T1's own access point, or USB networking), finds devices with DNS-SD, and authenticates every peer by a key recorded at pairing. On the device it exposes the same versioned `org.opendap.*` interfaces Blackbird OS already uses ([system ADR 0002](https://github.com/opendap-project/system/blob/main/docs/adr/0002-system-architecture.md)), so a feature is defined once and every surface reaches it. It never requires an account, an online service or Bluetooth. Version 0 is the first version, developed until the maintainers accept it.
+It runs over IP on whatever link is present (the LAN, the T1's own access point, or USB networking), finds devices with DNS-SD, and authenticates every peer by a key recorded at pairing. On the device it exposes the same versioned `org.opendap.*` interfaces Blackbird OS already uses ([system ADR 0002](https://github.com/opendap-project/blackbird/blob/main/system/docs/adr/0002-system-architecture.md)), so a feature is defined once and every surface reaches it. It never requires an account, an online service or Bluetooth. Version 0 is the first version, developed until the maintainers accept it.
 
 ## Motivation
 
@@ -35,7 +35,7 @@ Background:
 
 - no existing protocol covers the whole job: discovery, pairing, library and playback state, sync, transfer, control and updates between a device and every surface;
 - ecosystems of this kind have failed on security, updates and longevity, so those come first;
-- the [user-facing conventions spec](https://github.com/opendap-project/system/blob/main/docs/specs/user-facing-conventions.md).
+- the [user-facing conventions spec](https://github.com/opendap-project/blackbird/blob/main/system/docs/specs/user-facing-conventions.md).
 
 Without one protocol, each surface would talk to the device its own way. Features would be duplicated per surface, and the KDE Connect lesson would repeat: CVE-2025-66270 is one ambiguous handshake shared by five implementations ([KDE advisory](https://kde.org/info/security/advisory-20251128-1.txt)).
 
@@ -82,7 +82,7 @@ The main USB-C port in device mode presents **one configuration** with IAD, so i
   - on release, it re-indexes the changes incrementally;
   - when OpenDAP Desktop or the CLI is present, they use NCM instead, and the volume is not handed over.
 
-  Decided in [blackbird-os ADR 0013](https://github.com/opendap-project/blackbird-os/blob/main/docs/adr/0013-usb-device-mode-and-keystore.md): the card if present, otherwise a dedicated music partition.
+  Decided in [blackbird-os ADR 0013](https://github.com/opendap-project/blackbird/blob/main/os/docs/adr/0013-usb-device-mode-and-keystore.md): the card if present, otherwise a dedicated music partition.
 - **Endpoints:** about 12 non-control endpoints for the four functions together; the RK3566 DWC3 endpoint count is **UNVERIFIED** and must be measured.
 
 ### 4. Discovery
@@ -106,7 +106,7 @@ The main USB-C port in device mode presents **one configuration** with IAD, so i
 - **Per-peer keys and revocation.** Every pairing has its own keys; removing a device from any surface revokes it everywhere at the next sync.
 - **Keys always go through a keystore** (OS-032, the maintainers' decision): no service handles key files.
   - The keystore is backed by a TEE whenever the platform offers one.
-  - The RK3566 has no mainline OP-TEE and its OTP is read-only to Linux ([OP-TEE platforms](https://optee.readthedocs.io/en/latest/general/platforms.html)), so the keystore starts on protected filesystem storage ([blackbird-os ADR 0013](https://github.com/opendap-project/blackbird-os/blob/main/docs/adr/0013-usb-device-mode-and-keystore.md)).
+  - The RK3566 has no mainline OP-TEE and its OTP is read-only to Linux ([OP-TEE platforms](https://optee.readthedocs.io/en/latest/general/platforms.html)), so the keystore starts on protected filesystem storage ([blackbird-os ADR 0013](https://github.com/opendap-project/blackbird/blob/main/os/docs/adr/0013-usb-device-mode-and-keystore.md)).
   - It moves to hardware without changing its users: a key holder on the board (BRD-059, a discrete TPM 2.0 proposed), or an OP-TEE port.
   - Pairing stays safe even if a key is extracted, through per-peer keys and revocation.
 - **Households.** A household is a set of owners' devices that share the collection. Members (SYS-044) get their own personal state. Permissions follow per member and per device.

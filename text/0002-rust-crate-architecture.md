@@ -6,7 +6,7 @@
 
 ## Summary
 
-Every OpenDAP Rust package follows one architecture: crates first, layered (domain model, application core with ports, adapters, interfaces), one shared domain model per context, platform-agnostic core, so that everything the `opendap` CLI can do is shared with OpenDAP Desktop and other surfaces. The standard is [system/docs/specs/rust-crate-architecture.md](https://github.com/opendap-project/system/blob/main/docs/specs/rust-crate-architecture.md).
+Every OpenDAP Rust package follows one architecture: crates first, layered (domain model, application core with ports, adapters, interfaces), one shared domain model per context, platform-agnostic core, so that everything the `opendap` CLI can do is shared with OpenDAP Desktop and other surfaces. The standard is [system/docs/specs/rust-crate-architecture.md](https://github.com/opendap-project/blackbird/blob/main/system/docs/specs/rust-crate-architecture.md).
 
 ## Motivation
 
