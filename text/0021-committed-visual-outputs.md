@@ -89,8 +89,8 @@ Both run from the pinned tools checkout (`hardware/tools/render`), so a reposito
 ### 8. Sizes and LFS
 
 1. **Per file: 5 MB**, the limit `check-added-large-files` already sets; **per component: 100 MB** in `outputs/`. `odw render update` fails on either, naming the file; a source over them reduces its `layers`, `views` or `size`.
-2. SVG, PDF, PNG and README are plain git objects: GitHub shows them inline, they compress well (a 3.1 MB sheet SVG is 0.43 MB gzipped) and git deltas successive versions. An unchanged sheet regenerates to the same bytes and adds nothing to history.
-3. glTF (`.glb`) follows the LFS rule the templates already set for CAD binaries (`templates/gitattributes/lfs`); the T1 board's glTF (6.7 MB) is over the per-file limit, so `kicad-pcb` sources leave `glb` off by default.
+2. **Text outputs in git, binary outputs in Git LFS.** SVG, README and stamp are plain git objects: GitHub shows them inline, they compress well and git deltas successive versions. PNG, PDF and glTF (`.glb`) go through Git LFS (the templates' `gitattributes/outputs` fragment), so the repository's packs do not carry a new copy of a multi-megabyte binary with every change; GitHub shows LFS images and PDFs in its file view.
+3. **Only what changed is rewritten.** `odw render update` writes a file only when its bytes change, so an unchanged sheet regenerates to the same bytes and adds nothing. Measured on the T1 board (2026-10-29): a one-sheet schematic edit rewrites that sheet's SVG, the PDF and the stamp, and nothing else; the sheet's new SVG packs as a git delta of a few kilobytes against its previous version (two versions of the 552 kB speaker sheet pack to 105 kB, the size of one gzipped), and the PDF adds one 4.0 MB LFS object. A placement change rewrites the layer SVGs it touches (git deltas) and the four renders (about 1.1 MB of LFS objects). The board's glTF (6.7 MB) is over the per-file limit, so `kicad-pcb` sources leave `glb` off by default.
 4. `outputs/` is marked `linguist-generated` (`.gitattributes` fragment), so GitHub folds it in diffs and language statistics.
 
 ### 9. Rollout
@@ -104,7 +104,7 @@ Both run from the pinned tools checkout (`hardware/tools/render`), so a reposito
 - **Outputs inside `export/`.** Rejected (§2.2): it makes visual files part of the consumer interface and ties them to tags.
 - **CI-generated outputs** (KiBot, GitHub Actions artefacts). Rejected: no CI (contributor guide, Local only), and artefacts are not shown in the repository view.
 - **Regenerate on every commit.** Rejected: tens of seconds per commit for a board; stamps make the commit check a hash comparison and move regeneration to the push.
-- **LFS for every binary output.** Rejected for PDF and PNG: LFS objects count against a bandwidth quota and add a client step for every contributor, for files of a few hundred kilobytes; kept for glTF, as for other CAD binaries.
+- **Every output in plain git.** Rejected: each regeneration would add a full copy of the PDF and the renders to the packs, which never shrink; in LFS they are stored once per version outside the packs. **Every output in LFS** is rejected too: SVGs are text that delta-compresses, and LFS stores every version whole.
 - **Byte-identical PNG renders.** Not reachable with KiCad 10.0.7's renderer (§5.4); the tolerance keeps committed renders stable instead.
 
 ## Open questions
