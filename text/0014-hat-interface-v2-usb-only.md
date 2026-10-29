@@ -1,12 +1,12 @@
 # RFC 0014: HAT interface v2: HATs are USB only
 
-- **Status:** Accepted (2026-10-25), with [hat-standard ADR 0006](https://github.com/opendap-project/hat-standard/blob/main/docs/adr/0006-hats-are-usb-only.md). Recorded in hat-standard, board and hat-camera; the other repository changes below are listed, not applied.
+- **Status:** Accepted (2026-10-25), with [hat-standard ADR 0006](https://github.com/opendap-project/hats/blob/main/standard/docs/adr/0006-hats-are-usb-only.md). Recorded in hat-standard, board and hat-camera; the other repository changes below are listed, not applied.
 - **Date:** 2026-10-25
 - **Affected repositories:** hat-standard (owner of the interface), board, hat-camera, hat-nas, hat-radio, hat-oscilloscope, hat-vna, hat-recorder, hat-powerbank, system, toolkit-verify.
 
 ## Summary
 
-The HAT interface moves from v1.1 (68 pogo contacts in three levels: USB 3, a PCIe or CSI-2 extension, I2S, GPIO, SWD, I2C, an ID EEPROM, presence, interrupt) to **v2** (Draft): one USB port of **20 contacts** on a 2 × 10 field at 2.54 mm, carrying only `SSTX±`, `SSRX±`, `D±`, `VBUS` ×4, `GND` ×9 and `CC`. Every HAT capability goes through USB with standard device classes; power follows USB Power Delivery; identity is in USB descriptors, presence is attach and wake is USB remote wakeup. The specification is [interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md). v2 is a new major revision: v1 and v2 do not mate. Nothing was built against v1.
+The HAT interface moves from v1.1 (68 pogo contacts in three levels: USB 3, a PCIe or CSI-2 extension, I2S, GPIO, SWD, I2C, an ID EEPROM, presence, interrupt) to **v2** (Draft): one USB port of **20 contacts** on a 2 × 10 field at 2.54 mm, carrying only `SSTX±`, `SSRX±`, `D±`, `VBUS` ×4, `GND` ×9 and `CC`. Every HAT capability goes through USB with standard device classes; power follows USB Power Delivery; identity is in USB descriptors, presence is attach and wake is USB remote wakeup. The specification is [interface v2](https://github.com/opendap-project/hats/blob/main/standard/docs/specs/interface-v2.md). v2 is a new major revision: v1 and v2 do not mate. Nothing was built against v1.
 
 ## Motivation
 

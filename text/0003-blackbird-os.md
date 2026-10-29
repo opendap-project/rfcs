@@ -10,7 +10,7 @@ The operating system is renamed **Blackbird OS**. "Blackbird" stops being a rele
 
 ## Motivation
 
-"OpenDAP OS" repeated the umbrella brand and said nothing of its own; "Blackbird" was already public as the first release's codename ([opendap-os ADR 0009](https://github.com/opendap-project/blackbird-os/blob/main/docs/adr/0009-release-codenames.md)). Giving the system one stable name, independent of the release, makes it easier to refer to across documents, the device and the toolkit.
+"OpenDAP OS" repeated the umbrella brand and said nothing of its own; "Blackbird" was already public as the first release's codename (opendap-os ADR 0009, superseded and no longer published). Giving the system one stable name, independent of the release, makes it easier to refer to across documents, the device and the toolkit.
 
 ## Proposal
 
