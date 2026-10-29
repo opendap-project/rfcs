@@ -7,7 +7,7 @@
 
 ## Summary
 
-The faceplate interface moves from v0 (signal groups, RFC 0001) to v1 (Draft): contact positions, electrical classes and supply limits, the HID-over-I2C control and identity protocol, capability declaration, versioning, a mechanical parameter table and conformance tests. The specification is [faceplate-interface.md](https://github.com/opendap-project/t1/blob/main/docs/specs/faceplate-interface.md), with t1 ADR 0004 (identity and HID transport) and ADR 0005 (supply classes and protection).
+The faceplate interface moves from v0 (signal groups, RFC 0001) to v1 (Draft): contact positions, electrical classes and supply limits, the HID-over-I2C control and identity protocol, capability declaration, versioning, a mechanical parameter table and conformance tests. The specification is [faceplate-interface.md](https://github.com/opendap-project/t1/blob/main/product/docs/specs/faceplate-interface.md), with t1 ADR 0004 (identity and HID transport) and ADR 0005 (supply classes and protection).
 
 ## Motivation
 
