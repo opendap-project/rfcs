@@ -95,9 +95,10 @@ Both run from the pinned tools checkout (`hardware/tools/render`), so a reposito
 
 ### 9. Rollout
 
-1. The workspace templates add a fragment to the `.pre-commit-config.yaml` block: the two hooks, pinned at the tools tag that ships them, rendered for a repository that tracks an `outputs.toml` (`when_tracked`); and a `.gitattributes` fragment for `outputs/`. `odw sync --apply` writes them; a repository opts in by committing its `outputs.toml` and its first outputs.
+1. The workspace templates add a fragment to the `.pre-commit-config.yaml` block: the two hooks, pinned at the tools tag that ships them, rendered for a repository that tracks an `outputs.toml` outside a fixtures folder (`when_tracked`, `when_tracked_except`); and a `.gitattributes` fragment for `outputs/`. `odw sync --apply` writes them; a repository opts in by committing its `outputs.toml` and its first outputs.
 2. First: t1's board (the T1 main board schematic and board). Then each repository as it gains sources: t1's case and faceplates and the HATs (FreeCAD and Blender), libs (its KiCad examples and design-rule test boards, which fail DRC by design and are not visual outputs unless declared).
 3. Each affected repository records the outcome in its own `docs/` or `README.md` (RFC process, step 4).
+4. Until tools v0.2.0 is tagged, t1 pins tools v0.1.1, whose `no-stray-files` rejects every PDF and which has no outputs hooks: t1 carries a temporary `exclude: ^board/outputs/` on `no-stray-files`. At the v0.2.0 rollout t1 joins the templates' pre-commit block (the outputs hooks pinned at v0.2.0) and drops that exclusion, since `outputs-current` then checks the stamps and `no-stray-files` allows only stamped output PDFs (§7).
 
 ## Alternatives
 
@@ -109,5 +110,5 @@ Both run from the pinned tools checkout (`hardware/tools/render`), so a reposito
 
 ## Open questions
 
-- **Raster tolerance across KiCad versions.** The 0.1 % / 16 tolerance is measured on one machine and one KiCad version; a KiCad update that changes lighting regenerates every render, as intended.
+- **Raster tolerance across KiCad versions.** The 0.1 % / 32 tolerance (§5.4) is set from measurements on one machine and one KiCad version; a KiCad update that changes lighting regenerates every render, as intended.
 - **FreeCAD PNG views.** `freecadcmd` has no 3D view; a FreeCAD source gets glTF only until a headless view is available (for example rendering its glTF through Blender's Workbench engine).
