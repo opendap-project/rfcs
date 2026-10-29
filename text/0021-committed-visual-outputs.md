@@ -50,7 +50,7 @@ Every repository that holds design sources (KiCad schematics and boards, FreeCAD
 |---|---|---|---|---|
 | `kicad-sch` | root `.kicad_sch` | `schematic.pdf`, `schematic/<sheet>.svg` | `kicad-cli sch export pdf`, `sch export svg` | `kicad_theme` |
 | `kicad-pcb` | `.kicad_pcb` | `pcb/<layer>.svg`, `render/<view>.png`, optional `<name>.glb` | `kicad-cli pcb export svg --mode-multi`, `pcb render`, `pcb export glb` | `layers` (every copper layer, F/B.Silkscreen, F/B.Fab), `views` (`top`, `bottom`, `iso-front`, `iso-back`), `size` (1600 × 1200), `glb` (false), `kicad_theme` |
-| `freecad` | `.FCStd` | `render/<view>.png`, `<name>.glb` | `freecadcmd`: glTF through FreeCAD's exporter; PNG views need FreeCAD's 3D view, which `freecadcmd` does not have | `views` (`front`, `top`, `iso`), `glb` (true) |
+| `freecad` | `.FCStd` | `<name>.glb` | `freecadcmd`: glTF through FreeCAD's exporter; PNG views need FreeCAD's 3D view, which `freecadcmd` does not have, so `views` stays empty (open question) | `glb` (true) |
 | `blender` | `.blend` | `render/<view>.png`, `<name>.glb` | `blender --background`: the Workbench engine for PNG, the glTF exporter | `views` (`front`, `top`, `iso`), `glb` (true), `size` (1600 × 1200) |
 
 No STEP-to-glTF step is needed: KiCad exports glTF from the board, FreeCAD and Blender from their models. An adapter whose program is missing reports `render.unavailable` for its outputs and fails the run; `odw render list` shows which adapters a machine has.
@@ -67,8 +67,8 @@ No STEP-to-glTF step is needed: KiCad exports glTF from the board, FreeCAD and B
 1. **Isolated program settings.** KiCad runs with a fresh `KICAD_CONFIG_HOME` holding only the declared theme, so a maintainer's own colours, fonts or plot settings never reach an output; Blender runs with `--factory-startup`.
 2. **No timestamps, paths or random identifiers.** The tool rewrites what the programs stamp: the PDF `CreationDate` (same length, so the cross-reference offsets hold), the date in each SVG title; PNG files are written without ancillary chunks (`tIME`, `tEXt`).
 3. **Fixed views and sizes**, from `outputs.toml`, never from the program's last session.
-4. **Text outputs are byte-identical** across runs (PDF, SVG, README, stamp). KiCad 10.0.7's 3D renderer is not: four renders of the T1 board, 1568 × 1176, differed in 28 to 33 pixels (0.002 %), by at most 8 in a channel. A regenerated PNG that differs from the committed one in at most 0.1 % of its pixels, by at most 16 in a channel, counts as unchanged and the committed file is kept; beyond that it is a change.
-5. **SVG size.** KiCad draws each stroke-font glyph segment as its own `<path>`; the tool merges consecutive paths of one group into one path of several subpaths, which draws the same and takes 28 % less on the T1 schematic (86 MB to 62 MB over 69 sheets).
+4. **Text outputs are byte-identical** across runs (PDF, SVG, README, stamp). KiCad 10.0.7's 3D renderer is not: repeated renders of the T1 board, 1568 × 1176, differed in 28 to 58 pixels (0.003 %) from the top and bottom and in 570 to 758 pixels (0.041 %) from the isometric views, by at most 17 in a channel. A regenerated PNG that differs from the committed one in at most 0.1 % of its pixels, by at most 32 in a channel, counts as unchanged and the committed file is kept; beyond that it is a change.
+5. **SVG size.** KiCad draws each stroke-font glyph segment as its own `<path>`; the tool merges the paths of each glyph group into one path of several subpaths, which draws the same and takes about a quarter less (90.8 MB to 67.2 MB over the T1 board's 69 sheet and 10 layer SVGs). Paths of filled shapes are never merged.
 
 ### 6. Hooks
 
