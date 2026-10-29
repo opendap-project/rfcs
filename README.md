@@ -40,6 +40,7 @@ Generated from each RFC's title and status (`odapkit docs index text --readme RE
 | [RFC 0018: The digital thread: records, owners and schemas](text/0018-digital-thread.md) | Accepted (2026-10-27). The records are applied one document at a time (§4 rule 4); the repository changes in §8 are listed, not applied. |
 | [RFC 0019: Versioning and releases](text/0019-versioning-and-releases.md) | Accepted (2026-10-27). Nothing is tagged yet; the repository changes in §11 are listed, not applied. |
 | [RFC 0020: One input model for the device and the host](text/0020-input-wire-model.md) | Accepted (2026-10-27). |
+| [RFC 0021: Committed visual outputs](text/0021-committed-visual-outputs.md) | Accepted (2026-10-29, maintainer approval). Implemented in tools (`odw render`, the `outputs-current` and `outputs-regenerate` hooks, the `no-stray-files` exception) and in t1's board; the other repositories take it as they gain sources (§9). |
 <!-- index:end -->
 
 ## Accepted RFCs recorded here
